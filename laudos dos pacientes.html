@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Laudos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Menu lateral */
+    .sidebar {
+      width: 70px;
+      background-color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .sidebar i {
+      font-size: 22px;
+      color: #94a3b8;
+      margin: 25px 0;
+      cursor: pointer;
+    }
+
+    .sidebar i:hover {
+      color: #3b82f6;
+    }
+
+    /* Conteúdo principal */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    .topbar {
+      background-color: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .topbar img {
+      height: 45px;
+    }
+
+    .center-editor {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .center-editor button {
+      background-color: #3b82f6;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .center-editor button:hover {
+      background-color: #2563eb;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filters input, .filters button, .filters select {
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      color: white;
+      padding: 8px;
+      border-radius: 6px;
+    }
+
+    /* Tabela */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    thead {
+      background-color: #1e293b;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    tbody tr {
+      background-color: #1e293b;
+      border-bottom: 1px solid #334155;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #1d4ed8;
+    }
+
+    tbody tr:hover {
+      background-color: #2563eb;
+    }
+
+    .status-red {
+      color: red;
+      font-weight: bold;
+    }
+
+    .btn-acao {
+      background-color: #3b82f6;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-size: 13px;
+    }
+
+    .btn-acao:hover {
+      background-color: #2563eb;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <i class="fa-solid fa-user-doctor"></i>
+    <i class="fa-solid fa-file-medical"></i>
+    <i class="fa-solid fa-users"></i>
+    <i class="fa-solid fa-gear"></i>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <!-- Logo -->
+      <img src="d:\UNIT Trabalhos\Trabalhos do segundo semestre\Residência em Software\Site HealthOne\Made with insMind-WhatsApp Image 2025-08-16 at 13.54.13.png" alt="HealthOne Logo" >
+
+      <!-- Botão centralizado -->
+      <div class="center-editor">
+        <button>Editor de Laudos</button>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filters">
+        <input type="text" placeholder="Buscar paciente/pedido">
+        <input type="date">
+        <input type="date">
+        <button>Hoje</button>
+        <button>Semana</button>
+        <button>Mês</button>
+        <button>Filtros</button>
+        <button>Exportar</button>
+      </div>
+    </div>
+
+    <!-- Tabela -->
+    <div class="content">
+      <table>
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Data</th>
+            <th>Prazo</th>
+            <th>Paciente</th>
+            <th>Solicitante</th>
+            <th>Exame/Classificação</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>30649490</td>
+            <td><b>29/07/2025</b></td>
+            <td class="status-red">29/07/2025</td>
+            <td>Isabelle Felipe Gois Dias</td>
+            <td>Maria Angelica Farias Dias</td>
+            <td>-</td>
+            <td>
+              <a href="revisão de laudo.html" class="btn-acao">Revisar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>30676976</td>
+            <td><b>29/07/2025</b></td>
+            <td class="status-red">29/07/2025</td>
+            <td>Gael Alexandre Antunes</td>
+            <td>Paula Magalhães Valesco Matos</td>
+            <td>-</td>
+            <td>
+              <a href="revisão de laudo.html" class="btn-acao">Revisar</a>
+            </td>
+          </tr>
+          <tr>
+            <td>30609576</td>
+            <td><b>28/07/2025</b></td>
+            <td>30/07/2025</td>
+            <td>Norrara Amanda Teles</td>
+            <td>Camilla Andrade Lima Oliveira</td>
+            <td>Ecocardiograma Fetal</td>
+            <td>
+              <a href="revisão de laudo.html" class="btn-acao">Revisar</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

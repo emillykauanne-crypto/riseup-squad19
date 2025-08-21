@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Médico</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #f1f5f9;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 0.9em;
+      color: #cbd5e1;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      background-color: #0f172a;
+      color: white;
+      outline: none;
+      border: 1px solid #334155;
+    }
+
+    input:focus {
+      border: 1px solid #3b82f6;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background-color: #3b82f6;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Login Médico</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="crm">CRM</label>
+        <input type="text" id="crm" name="crm" placeholder="Digite seu CRM" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+      </div>
+
+      <button type="submit" class="btn">Login</button> 
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // impede envio real do formulário
+
+      // aqui você poderia validar os dados, mas por enquanto só redireciona
+      window.location.href = "laudos dos pacientes.html"; // página de destino
+    });
+  </script>
+</body>
+</html>

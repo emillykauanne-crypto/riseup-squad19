@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login do Paciente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-card {
+      background: #111827;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      width: 350px;
+    }
+    .login-card h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      background: #0b1220;
+      color: #f1f5f9;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .error {
+      color: #ef4444;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h2>Login do Paciente</h2>
+    <div class="error" id="errMsg">Campos incorretos ou não encontrados.</div>
+    <form id="loginForm">
+      <label for="emailOrNumber">E-mail ou Número do paciente</label>
+      <input type="text" id="emailOrNumber" name="emailOrNumber" placeholder="Ex: nome@exemplo.com ou +55 (11) 91234-5678" required>
+
+      <label for="docNumber">CPF, RG ou CNH</label>
+      <input type="text" id="docNumber" name="docNumber" placeholder="000.000.000-00 ou RG/CNH" required>
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    // Simulação de banco de dados de exemplo
+    const pacientes = [
+      { email: 'joao@exemplo.com', cpf: '12345678909', rg: 'MG123456', cnh: 'CNH12345', senha: 'senha123' },
+      { email: 'maria@exemplo.com', cpf: '98765432100', rg: 'SP987654', cnh: 'CNH54321', senha: 'senha456' }
+    ];
+
+    const form = document.getElementById('loginForm');
+    const errMsg = document.getElementById('errMsg');
+
+    function onlyDigits(v){ return v.replace(/\D/g,''); }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      errMsg.style.display = 'none';
+      const emailOrNumber = form.emailOrNumber.value.trim().toLowerCase();
+      const docNumber = form.docNumber.value.trim();
+      const senha = form.senha.value;
+
+      // Busca paciente
+      const paciente = pacientes.find(p => (
+        p.email.toLowerCase() === emailOrNumber ||
+        p.cpf === onlyDigits(docNumber) ||
+        p.rg.toLowerCase() === docNumber.toLowerCase() ||
+        p.cnh.toLowerCase() === docNumber.toLowerCase()
+      ));
+
+      if(!paciente){
+        errMsg.textContent = 'E-mail/número ou documento não encontrado.';
+        errMsg.style.display = 'block';
+        return;
+      }
+
+      if(paciente.senha !== senha){
+        errMsg.textContent = 'Senha incorreta.';
+        errMsg.style.display = 'block';
+        return;
+      }
+
+      alert('Login realizado com sucesso! Bem-vindo(a).');
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
